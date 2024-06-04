@@ -1,0 +1,7 @@
+{
+  "name": "sigminex",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
