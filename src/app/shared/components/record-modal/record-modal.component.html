@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><span>Processo </span>{{ record.id }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="record">
+  <ion-item *ngIf="record.nome">
+    <ion-label class="field">Nome do operador</ion-label>
+    <ion-label>{{ record.nome }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.subs">
+    <ion-label class="field">Substancia</ion-label>
+    <ion-label>{{ record.subs }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.uso">
+    <ion-label class="field">Uso</ion-label>
+    <ion-label>{{ record.uso }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.fase">
+    <ion-label class="field">Fase</ion-label>
+    <ion-label>{{ record.fase }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.ultEvento">
+    <ion-label class="field">Ult Evento</ion-label>
+    <ion-label>{{ record.ultEvento }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.areaHa">
+    <ion-label class="field">Área em hectares</ion-label>
+    <ion-label>{{ record.areaHa }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="record.dsProcesso">
+    <ion-label class="field">DSProcesso</ion-label>
+    <ion-label>{{ record.dsProcesso }}</ion-label>
+  </ion-item>
+
+</ion-content>

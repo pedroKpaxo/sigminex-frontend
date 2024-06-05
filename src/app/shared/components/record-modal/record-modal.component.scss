@@ -1,0 +1,27 @@
+ion-title span {
+    font-weight: 900;
+}
+
+ion-item {
+    ion-label.field {
+        font-weight: 800;
+    }
+}
+
+ion-button {
+    &.favorite {
+        --background: var(--ion-color-secondary);
+        --color: var(--ion-color-primary-contrast);
+        width: 40px;
+
+        ion-button {
+            --background: var(--ion-color-primary-contrast);
+            --color: var(--ion-color-primary-contrast);
+        }
+    }
+
+    &.not-favorite {
+        --background: var(--ion-color-primary-contrast);
+        --color: var(--ion-color-primary);
+    }
+}
