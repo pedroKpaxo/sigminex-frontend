@@ -10,19 +10,39 @@ import { environment } from "@environments/environment";
 import { lastValueFrom, NotFoundError } from "rxjs";
 import { Task } from "@app/shared/util/types/task";
 
+interface GneralData {
+    FASE: string[];
+    PROCESSO: string[];
+    SUBS: string[];
+    USO: string[];
+}
+
 @Injectable(
     { providedIn: 'root' }
 )
 export class SigmineRecordsReposiory extends BaseRepository<SigmineRecordEntity> {
 
-    indexUrl = 'sigmine_records';
-    showUrl = 'sigmine_records/:id';
+    indexUrl = 'sigmine_records/sigmine_records';
+    filters = 'sigmine_records/filters';
+    showUrl = 'sigmine_records/sigmine_records/:id';
     editUrl = 'sigmine_records/:id';
     createUrl = 'sigmine_records';
     deleteUrl = 'sigmine_records/:id';
 
+    protected apiUrl = environment.api;
+
     constructor(protected readonly http: HttpClient) {
         super();
+    }
+
+
+    async getFilters(uf: string): Promise<Task<GneralData>> {
+        try {
+            const response = await lastValueFrom(this.http.get<GneralData>(`${this.apiUrl}/${this.filters}`, { params: { uf } }));
+            return new Success(response);
+        } catch (error) {
+            return new Failure(error as AppError);
+        }
     }
 
 

@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="">
+      SIgmineX
+    </ion-title>
+
+    <ion-buttons slot="end" *ngIf="userIsLogged(); else login">
+      <ion-button size="large">
+        <ion-icon slot="icon-only" name="person-circle" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ng-template #login>
+      <ion-buttons slot="end">
+        <ion-button class="login" fill="outline">
+          login
+        </ion-button>
+      </ion-buttons>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>

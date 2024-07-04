@@ -15,4 +15,13 @@ export class SigmineRecordsUseCase extends IndexUseCase<SigmineRecordModel> {
         });
         this.busy = false;
     }
+
+    async getFilters(uf: string) {
+        const res = await this.repository.getFilters(uf);
+        if (res.isSuccess) {
+            return res.data;
+        } else {
+            throw res.error;
+        }
+    }
 }

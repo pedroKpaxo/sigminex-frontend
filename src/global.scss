@@ -36,3 +36,45 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 @import "~leaflet/dist/leaflet.css";
+
+
+* {
+    font-family: system-ui, "Raleway", sans-serif;
+    font-feature-settings: "lnum" 1;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    width: 100%;
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.container {
+    max-width: 1200px; // Adjust the max-width as per your requirement
+    margin: 0 auto; // Center the container
+    padding: 0 16px; // Provide some space on the sides for smaller screens
+
+    // Media queries for various screen sizes
+    @media screen and (min-width: 768px) {
+        padding: 0 30px; // Increase padding on medium screens
+    }
+
+    @media screen and (min-width: 992px) {
+        max-width: 1140px; // Adjust max-width for large screens
+    }
+
+    @media screen and (min-width: 1200px) {
+        max-width: 1140px; // Adjust max-width for extra large screens
+    }
+}

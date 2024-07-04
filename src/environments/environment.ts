@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   api: 'https://sigminex-stage.us.aldryn.io/api/v1',
+  statesAndCitiesApi: 'https://brasil-geomax-bk-stage.us.aldryn.io',
+  oauthKey: 'c2lnb'
 };
 
 /*
