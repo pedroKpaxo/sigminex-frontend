@@ -47,6 +47,8 @@ export abstract class BaseRepository<
      */
     protected abstract readonly deleteUrl: string;
 
+    protected abstract readonly apiUrl: string;
+
 
 
     /**
@@ -57,11 +59,11 @@ export abstract class BaseRepository<
      * @throws An error if the entity could not be fetched.
      */
     async show<Model extends BaseModel>(
-        id: number,
+        id: number | string,
         decode: Decoder<Model>,
     ): Promise<Task<Model>> {
         try {
-            const baseUrl = environment.api;
+            const baseUrl = this.apiUrl;
             const showUrl = this.showUrl.replace(/:id/g, id.toString());
             let res = await lastValueFrom(this.http.get(`${baseUrl}/${showUrl}/`));
 
@@ -91,7 +93,7 @@ export abstract class BaseRepository<
         try {
             const res = await lastValueFrom(
                 this.http.get<Array<Entity>>(
-                    `${environment.api}/${this.indexUrl}/`,
+                    `${this.apiUrl}/${this.indexUrl}/`,
                     { params: this.queryToParams(query) },
                 ),
             );
@@ -120,13 +122,13 @@ export abstract class BaseRepository<
             let request, url;
 
             if (isEdit) {
-                url = `${environment.api}/${this.editUrl}/`.replace(
+                url = `${this.apiUrl}/${this.editUrl}/`.replace(
                     /:id/g,
                     form._id.toString(),
                 );
                 request = this.http.patch<Entity>(url, form);
             } else {
-                url = `${environment.api}/${this.createUrl}/`;
+                url = `${this.apiUrl}/${this.createUrl}/`;
                 request = this.http.post<Entity>(url, form);
             }
 
@@ -154,7 +156,7 @@ export abstract class BaseRepository<
         try {
             await lastValueFrom(
                 this.http.delete(
-                    `${environment.api}/${this.deleteUrl.replace(
+                    `${this.apiUrl}/${this.deleteUrl.replace(
                         /:id/g,
                         id.toString(),
                     )}/`,

@@ -1,0 +1,45 @@
+<ion-split-pane class="pane" contentId="main-content" [disabled]="true">
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-header class="">
+      <ion-toolbar class="">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list id="inbox-list">
+        <div class="menu-upper">
+          <ion-list-header>
+            <img src="../../../assets/oil-well.svg" alt="logo" class="logo" />
+
+            PETROVIEWS</ion-list-header>
+          <ion-note>Brazilian oil and gas assets</ion-note>
+        </div>
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-item button routerDirection="root" [routerLink]="[p.url]" lines="none" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'">
+            </ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button routerDirection="root" [routerLink]="['profile']" lines="none" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="'person' + '-outline'" [md]="'person'">
+            </ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <app-main-toolbar></app-main-toolbar>
+    <ion-content class="ion-no-padding">
+      <router-outlet id="main-content"> </router-outlet>
+    </ion-content>
+  </div>
+</ion-split-pane>

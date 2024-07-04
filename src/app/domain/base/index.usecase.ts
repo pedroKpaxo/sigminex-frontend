@@ -145,7 +145,7 @@ export abstract class IndexUseCase<
     if (nothingNew)
       return Promise.resolve(this.result) as Promise<Task<Array<Model>>>;
 
-    // Otherwise, we update the query and fetch the data.
+    // Otherwise, we update the query and fetch the data but respect the case if upper or lower case
     this.query = { ...this.query, ...query };
     return await this.fetch(indexStrategy);
   }
